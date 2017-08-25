@@ -1,0 +1,35 @@
+<html>
+    <head>
+       <title>Pokes Page</title>
+       
+       
+    </head>
+    <body>
+        <h1>Hello, {{active.name}}</h1><a href="/login/logout">Logout</a>
+        <h4>Here is the list of your friends:</h4>
+        
+        <div>
+            <table>
+                <tr>
+                   <th>Alias</th><th>Action</th>
+                </tr>
+                {% for user in curr_friends %}
+                <tr>
+                   <td>{{user.alias}}</td><td><a href="friends/profile/{{user.id}}">View Profile</a>     <a href="friends/remove/{{user.id}}">Remove Friend</a></td>
+                </tr>{%endfor%}
+            </table>
+        </div>
+        
+      
+        <h5>Other Users not on your friend's list:</h5>
+        <table>
+            <tr>
+                <th>Alias</th><th>Action</th>
+            </tr>
+            {% for user in all %}
+            <tr>
+                <td><a href="friends/profile/{{user.id}}">{{user.alias}}</a></td><td><a href="friends/add/{{user.id}}">Add as Friend</a></td>
+            </tr>{%endfor%}
+        </table>
+    </body>
+</html>
